@@ -1,0 +1,160 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+body {
+  @apply bg-gradient-to-br from-violet-50 via-fuchsia-50 to-cyan-50 text-slate-900 antialiased;
+  min-height: 100vh;
+  animation: gradient-shift 15s ease infinite;
+  background-size: 400% 400%;
+}
+
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.main-container {
+  @apply max-w-7xl mx-auto px-6 py-12 lg:px-8 lg:py-16;
+}
+
+.section {
+  @apply mt-24 scroll-mt-24;
+  animation: fadeInUp 0.8s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.section-title {
+  @apply text-3xl sm:text-4xl font-black text-slate-900 mb-8 relative inline-block;
+}
+
+.section-title::after {
+  content: '';
+  @apply absolute -bottom-2 left-0 w-full h-1.5 bg-gradient-to-r from-violet-500 via-fuchsia-500 to-cyan-500 rounded-full;
+  animation: shimmer 2s ease-in-out infinite;
+  background-size: 200% 100%;
+}
+
+@keyframes shimmer {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.badge {
+  @apply inline-flex items-center rounded-full border-2 border-violet-300 bg-white/90 px-4 py-2 text-xs font-bold text-violet-700 backdrop-blur-sm shadow-lg shadow-violet-200/50 transition-all duration-300;
+}
+
+.badge:hover {
+  @apply border-fuchsia-400 bg-gradient-to-r from-violet-100 to-fuchsia-100 scale-110 shadow-xl shadow-fuchsia-300/50 -rotate-2;
+}
+
+.card {
+  @apply rounded-3xl border-2 border-violet-200 bg-white/80 p-8 shadow-2xl shadow-violet-200/30 backdrop-blur-md transition-all duration-500 hover:border-fuchsia-300 hover:shadow-2xl hover:shadow-fuchsia-300/40 hover:-translate-y-2 hover:scale-[1.02];
+  position: relative;
+  overflow: hidden;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+  transition: left 0.5s;
+}
+
+.card:hover::before {
+  left: 100%;
+}
+
+.glass-card {
+  @apply rounded-3xl border-2 border-violet-200/50 bg-white/70 backdrop-blur-xl shadow-2xl shadow-violet-200/40 transition-all duration-500 hover:bg-white/90 hover:border-fuchsia-300/70 hover:scale-[1.02] hover:shadow-fuchsia-300/50;
+}
+
+.gradient-text {
+  @apply bg-gradient-to-r from-violet-600 via-fuchsia-500 to-cyan-500 bg-clip-text text-transparent bg-[length:200%_auto];
+  animation: gradient-flow 3s ease infinite;
+}
+
+@keyframes gradient-flow {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.btn-primary {
+  @apply inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-violet-600 via-fuchsia-500 to-cyan-500 px-8 py-4 text-sm font-bold text-white shadow-2xl shadow-violet-400/50 transition-all duration-300 hover:shadow-2xl hover:shadow-fuchsia-500/60 hover:scale-110 hover:-translate-y-1;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.3);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.btn-primary:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+.btn-secondary {
+  @apply inline-flex items-center gap-2 rounded-full border-2 border-violet-400 bg-white/80 backdrop-blur-sm px-8 py-4 text-sm font-bold text-violet-700 shadow-xl shadow-violet-300/40 transition-all duration-300 hover:border-fuchsia-500 hover:bg-gradient-to-r hover:from-violet-100 hover:to-fuchsia-100 hover:scale-110 hover:-translate-y-1;
+}
+
+.floating {
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+.pulse-border {
+  animation: pulse-border 2s ease-in-out infinite;
+}
+
+@keyframes pulse-border {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(139, 92, 246, 0.7);
+  }
+  50% {
+    box-shadow: 0 0 0 20px rgba(139, 92, 246, 0);
+  }
+}
+
+.interactive-dot {
+  @apply absolute w-2 h-2 rounded-full bg-gradient-to-r from-violet-400 to-fuchsia-400;
+  animation: dot-float 4s ease-in-out infinite;
+}
+
+@keyframes dot-float {
+  0%, 100% { transform: translate(0, 0); }
+  25% { transform: translate(10px, -10px); }
+  50% { transform: translate(-10px, 10px); }
+  75% { transform: translate(10px, 10px); }
+}
