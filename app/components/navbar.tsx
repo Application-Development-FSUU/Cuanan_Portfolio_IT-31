@@ -2,11 +2,14 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { useRouter, usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const router = useRouter();
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -16,12 +19,37 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    if (href.startsWith("/#")) {
+      e.preventDefault();
+      const sectionId = href.substring(2);
+      
+      if (pathname === "/") {
+        // Already on homepage, just scroll
+        const element = document.getElementById(sectionId);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+      } else {
+        // Navigate to homepage first, then scroll
+        router.push("/");
+        setTimeout(() => {
+          const element = document.getElementById(sectionId);
+          if (element) {
+            element.scrollIntoView({ behavior: "smooth", block: "start" });
+          }
+        }, 100);
+      }
+      setMobileMenuOpen(false);
+    }
+  };
+
   const navItems = [
     { label: "Home", href: "/" },
     { label: "Projects", href: "/projects" },
-    { label: "About", href: "#about" },
-    { label: "Skills", href: "#skills" },
-    { label: "Contact", href: "#contact" },
+    { label: "About", href: "/#about" },
+    { label: "Skills", href: "/#skills" },
+    { label: "Contact", href: "/#contact" },
   ];
 
   return (
@@ -57,6 +85,7 @@ export default function Navbar() {
                 <Link
                   key={item.label}
                   href={item.href}
+                  onClick={(e) => handleNavClick(e, item.href)}
                   className="relative text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-violet-600 dark:hover:text-violet-400 transition-colors group"
                 >
                   {item.label}
@@ -91,8 +120,11 @@ export default function Navbar() {
                 <Link
                   key={item.label}
                   href={item.href}
+                  onClick={(e) => {
+                    handleNavClick(e, item.href);
+                    setMobileMenuOpen(false);
+                  }}
                   className="text-lg font-medium text-gray-700 dark:text-gray-300 hover:text-violet-600 dark:hover:text-violet-400 transition-colors py-2 border-b border-gray-100 dark:border-gray-800"
-                  onClick={() => setMobileMenuOpen(false)}
                 >
                   {item.label}
                 </Link>

@@ -39,12 +39,12 @@ const projects = [
 ];
 
 const skills = [
-  { name: "HTML/CSS", level: 95, icon: "🎨" },
-  { name: "JavaScript", level: 88, icon: "⚡" },
-  { name: "React", level: 85, icon: "⚛️" },
-  { name: "Next.js", level: 80, icon: "🚀" },
-  { name: "TypeScript", level: 75, icon: "📘" },
-  { name: "Git & GitHub", level: 85, icon: "🔧" },
+  { name: "HTML/CSS", level: 95},
+  { name: "JavaScript", level: 88},
+  { name: "React", level: 85},
+  { name: "Next.js", level: 80},
+  { name: "TypeScript", level: 75},
+  { name: "Git & GitHub", level: 85},
 ];
 
 export default function HomePage() {
@@ -110,7 +110,6 @@ export default function HomePage() {
                     className="group relative inline-flex items-center gap-3 px-8 py-4 rounded-full bg-gradient-to-r from-violet-600 to-fuchsia-600 text-white font-semibold hover:shadow-2xl hover:shadow-violet-500/30 transition-all duration-300 hover:scale-105"
                   >
                     <span>View Projects</span>
-                    <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform" />
                     <div className="absolute inset-0 rounded-full animate-shimmer" />
                   </Link>
                   
@@ -127,12 +126,82 @@ export default function HomePage() {
               <div className="flex items-center justify-center">
                 <div className="relative w-full max-w-[28rem] aspect-square rounded-full overflow-hidden border-4 border-white/60 dark:border-gray-800/60 shadow-2xl">
                   <Image
-                    src="/cat.jpg"
+                    src="/cuanan.jpg"
                     alt="Cresan J. Cuanan"
                     fill
                     className="object-cover"
                     priority
                   />
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* About Section */}
+        <section id="about" className="py-20 bg-gradient-to-b from-transparent via-violet-50/30 to-transparent dark:via-violet-950/10">
+          <div className="max-w-7xl mx-auto px-6">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl sm:text-5xl font-bold mb-6">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-600 to-fuchsia-600">
+                  About Me
+                </span>
+              </h2>
+              <p className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+                Passionate about creating meaningful digital experiences
+              </p>
+            </div>
+            
+            <div className="grid lg:grid-cols-2 gap-12 items-center">
+              <div className="space-y-6">
+                <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
+                  I&apos;m a 3rd-year IT student with a deep passion for web development and creating 
+                  user-friendly digital solutions. My journey in tech has been driven by curiosity and 
+                  a constant desire to learn and grow.
+                </p>
+                <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
+                  From building simple HTML pages to developing full-stack applications with modern 
+                  frameworks, I&apos;ve enjoyed every step of the learning process. I believe in writing 
+                  clean, maintainable code and creating experiences that users love.
+                </p>
+                <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
+                  When I&apos;m not coding, you can find me exploring new technologies, contributing to 
+                  open-source projects, or collaborating with fellow developers to build something amazing.
+                </p>
+              </div>
+              
+              <div className="grid grid-cols-2 gap-6">
+                <div className="p-6 rounded-2xl bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm border border-violet-200/50 dark:border-gray-800">
+                  <div className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-violet-600 to-fuchsia-600 mb-2">
+                    3+
+                  </div>
+                  <div className="text-gray-600 dark:text-gray-400">
+                    Years of Study
+                  </div>
+                </div>
+                <div className="p-6 rounded-2xl bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm border border-violet-200/50 dark:border-gray-800">
+                  <div className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-violet-600 to-fuchsia-600 mb-2">
+                    10+
+                  </div>
+                  <div className="text-gray-600 dark:text-gray-400">
+                    Projects Built
+                  </div>
+                </div>
+                <div className="p-6 rounded-2xl bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm border border-violet-200/50 dark:border-gray-800">
+                  <div className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-violet-600 to-fuchsia-600 mb-2">
+                    6+
+                  </div>
+                  <div className="text-gray-600 dark:text-gray-400">
+                    Technologies
+                  </div>
+                </div>
+                <div className="p-6 rounded-2xl bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm border border-violet-200/50 dark:border-gray-800">
+                  <div className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-violet-600 to-fuchsia-600 mb-2">
+                    100%
+                  </div>
+                  <div className="text-gray-600 dark:text-gray-400">
+                    Dedication
+                  </div>
                 </div>
               </div>
             </div>
@@ -159,8 +228,7 @@ export default function HomePage() {
                   key={skill.name}
                   className="group relative p-6 rounded-2xl bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm border border-violet-200/50 dark:border-gray-800 hover-3d hover:border-violet-300 dark:hover:border-violet-700 transition-all duration-300"
                 >
-                  <div className="flex items-center justify-between mb-4">
-                    <span className="text-2xl">{skill.icon}</span>
+                  <div className="flex items-center justify-center mb-4">
                     <span className="text-lg font-semibold text-gray-900 dark:text-white">
                       {skill.name}
                     </span>
@@ -290,7 +358,9 @@ export default function HomePage() {
                 
                 <div className="flex flex-wrap justify-center gap-6">
                   <a
-                    href="mailto:cresan.cuanan@urios.edu.ph"
+                    href="https://mail.google.com/mail/?view=cm&fs=1&to=cresan.cuanan@urios.edu.ph&su=Portfolio%20Inquiry&body=Hi%20Cresan,%0A%0A"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="group flex items-center gap-3 px-8 py-4 rounded-full bg-gradient-to-r from-violet-600 to-fuchsia-600 text-white font-semibold hover:shadow-2xl hover:shadow-violet-500/30 transition-all duration-300 hover:scale-105"
                   >
                     <span>Send Email</span>
@@ -298,7 +368,7 @@ export default function HomePage() {
                   </a>
                   
                   <a
-                    href="https://github.com"
+                    href="https://github.com/Cresancuanan200405"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="group flex items-center gap-3 px-8 py-4 rounded-full border-2 border-violet-200 dark:border-violet-800 text-violet-700 dark:text-violet-300 font-semibold hover:border-violet-400 dark:hover:border-violet-600 hover:bg-violet-50 dark:hover:bg-violet-900/30 transition-all duration-300 hover:scale-105"
